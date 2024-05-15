@@ -1,4 +1,5 @@
 import Header from "./components/Header"
+import Footer from "./components/Footer"
 function App() {
   return (
     <>
@@ -6,9 +7,7 @@ function App() {
       <main>
         Alll content here
       </main>
-      <footer>
-        Links and media subquieries here
-      </footer>
+      <Footer/>
     </>
   )
 }

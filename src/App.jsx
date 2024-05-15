@@ -1,15 +1,18 @@
-import Header from "./components/Header"
-import Footer from "./components/Footer"
+import Header from './components/Header';
+import Footer from './components/Footer';
+import MainContent from './Views/MainContent';
+//import Refac from './components/Refac'
+//import Servicios from './components/Servicios';
 function App() {
   return (
     <>
-      <Header/>
+      <Header />
       <main>
-        Alll content here
+        <MainContent />
       </main>
-      <Footer/>
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

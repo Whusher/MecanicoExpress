@@ -1,5 +1,9 @@
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 function Servicios() {
     return (
+        <>
+        <Header/>
         <div className="flex justify-between max-w-7xl mx-auto px-4 py-8">
             {/* Columna izquierda (Recuadro negro) */}
             <div className="w-1/2 max-w-lg bg-black p-6 rounded-lg text-white ">
@@ -25,6 +29,8 @@ function Servicios() {
                 <img src="/service.png" alt="Imagen" className="w-full max-w-xl h-auto" />
             </div>
         </div>
+        <Footer/>
+        </>
     );
 }
 

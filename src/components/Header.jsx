@@ -1,8 +1,9 @@
 import { Fragment } from 'react';
+import { ComponentSVG } from '../assets/ComponentSVG';
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItems, MenuItem, Transition } from '@headlessui/react';
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { Link, useLocation } from 'react-router-dom'; // Importa Link de React Router
-
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Link, useLocation, useNavigate } from 'react-router-dom'; // Importa Link de React Router
+import { useAuth } from '../contexts/AuthContext';
 //La navegacion superior segun corresponda
 const navigation = [
   { name: 'INICIO', href: '/', current: true }, 
@@ -20,6 +21,9 @@ export default function Header() {
 
   const location = useLocation();
 
+  const {state} = useAuth();
+
+  const navigate = useNavigate();
 
   return (
     <Disclosure as="nav" className="bg-backgroundNormal">
@@ -65,17 +69,11 @@ export default function Header() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button
-                  type="button"
-                  className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                >
-                  <span className="absolute -inset-1.5" />
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
 
                 {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-3">
+                { //Si existe nuestro usuario aparecera el perfil de lo contrario se solicitara Iniciar Sesion
+                  state.userToken ? (
+                    <Menu as="div" className="relative ml-3">
                   <div>
                     <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="absolute -inset-1.5" />
@@ -130,10 +128,17 @@ export default function Header() {
                     </MenuItems>
                   </Transition>
                 </Menu>
+                  ) : (
+                    <p className='font-bold font-sans text-white ' 
+                      onClick={()=> navigate('/login')}
+                    >Iniciar sesion <ComponentSVG.Login/> </p>
+                  )
+                }
+                
               </div>
             </div>
           </div>
-
+            {/* Panel de Mobile */}
           <DisclosurePanel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item) => (

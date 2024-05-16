@@ -1,5 +1,9 @@
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 function Refacciones() {
     return (
+      <>
+      <Header/>
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="md:flex justify-between">
           {/* Columna izquierda (Recuadro negro) */}
@@ -24,6 +28,8 @@ function Refacciones() {
           </div>
         </div>
       </div>
+      <Footer/>
+      </>
     );
   }
   

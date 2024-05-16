@@ -1,16 +1,23 @@
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-//import MainContent from './Views/MainContent';
-//import Refac from './views/Refac'
-//import Servicios from './views/Servicios';
+import Home from './views/MainContent'; // Importa tus componentes de páginas
+//import Citas from './pages/Citas';
+import Servicios from './views/Servicios';
+//import Promociones from './pages/Promociones';
+import Refacciones from './views/Refac';
+
 function App() {
   return (
-    <>
+    <Router>
       <Header />
-      <main className='mb-16'>
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/servicios" element={<Servicios />} />
+        <Route path="/refacciones" element={<Refacciones />} />
+      </Routes>
       <Footer />
-    </>
+    </Router>
   );
 }
 

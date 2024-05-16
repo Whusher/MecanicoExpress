@@ -4,7 +4,7 @@ export default function Footer() {
   const date = new Date();
 
   return (
-    <footer className="bg-backgroundNormal fixed bottom-0 left-0 w-full">
+    <footer className="bg-backgroundNormal md:fixed bottom-0 left-0 w-full z-10">
       {/* Contenido para pantallas grandes */}
       <div className="hidden md:flex w-full p-5 text-white">
             <div className="flex items-center mr-auto ml-0">

@@ -1,14 +1,13 @@
 import Header from './components/Header';
 import Footer from './components/Footer';
-import MainContent from './Views/MainContent';
-//import Refac from './components/Refac'
-//import Servicios from './components/Servicios';
+//import MainContent from './Views/MainContent';
+//import Refac from './views/Refac'
+//import Servicios from './views/Servicios';
 function App() {
   return (
     <>
       <Header />
-      <main>
-        <MainContent />
+      <main className='mb-16'>
       </main>
       <Footer />
     </>

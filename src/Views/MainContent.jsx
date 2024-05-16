@@ -8,12 +8,12 @@ function MainContent() {
       <div className="flex justify-between max-w-7xl mx-auto px-4 py-8">
         {/* Columna izquierda */}
         <div className="w-1/2">
-          <h1 className="text-4xl font-bold mb-1">Mécanico Express</h1>
+          <h1 className="text-4xl font-bold mb-1">Mecánico Express</h1>
           <h2 className="text-3xl font-semibold mb-10">
-            Taller Mécanico en Querétaro
+            Taller Mecánico en Querétaro
           </h2>
           <p className="text-lg font-semibold mb-2">
-            Nuestra Visión es lograr que todos <br />
+            Nuestra visión es lograr que todos <br />
             nuestros clientes manejen seguros.
           </p>
           <p className="text-lg font-semibold mb-20">

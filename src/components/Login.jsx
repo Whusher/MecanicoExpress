@@ -36,16 +36,11 @@ function Login() {
   return (
     <div className="flex justify-center items-center h-screen bg-backgroundNormal">
       {/* <!-- Left: Image --> */}
-      <div className="w-1/2 h-screen hidden lg:block bg-white items-center">
+      <div className="w-1/2 h-screen hidden lg:flex justify-center items-center bg-white">
         <img
-          src='/Logo.png'
+          src='/login.png'
           alt=""
-          className="object-cover w-200 h-1/6 center"
-        />
-        <img
-          src='/onix.png'
-          alt=""
-          className="object-cover w-full h-1/2"
+          className="object-cover h-full"
         />
       </div>
       {/* <!-- Right: Login Form --> */}

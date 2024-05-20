@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
             ...prevState,
             userToken: action.token,
             isSignOut: false,
+            emailUser: action.email
           };
         case "SIGN_OUT":
           return {
@@ -31,6 +32,7 @@ export const AuthProvider = ({ children }) => {
     },
     {
       userToken: null,
+      emailUser: null,
       isSignOut: false,
       isLoading: true,
     }
@@ -43,7 +45,7 @@ export const AuthProvider = ({ children }) => {
         // Receive the token as an argument
         // Logic for log in
         console.log(token);
-        dispatch({ type: "SIGN_IN", token: "pollito" }); // Update state with the received token
+        dispatch({ type: "SIGN_IN", token: "pollito", email: 'pollito@mail.com' }); // Update state with the received token
         console.log("INICIO SESION UN cabron");
         try {
           //await SecureStore.setItemAsync("userToken", "pollito"); // Store the received token

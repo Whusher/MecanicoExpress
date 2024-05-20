@@ -1,9 +1,11 @@
 import { useNavigate} from "react-router-dom";
 import { useState } from "react";
 //import { ToastContainer, toast } from "react-toastify";
-import { validateEmail } from "../utils/ValidationMail";
-
+//import { validateEmail } from "../utils/ValidationMail";
+import { useAuth } from "../contexts/AuthContext";
 function Login() {
+  const {signIn} = useAuth();
+
   const navigation = useNavigate();
   //Declaracion de objeto formulario
   const [formValues, setFormValues] = useState(initializeForm());
@@ -14,24 +16,7 @@ function Login() {
     setFormValues({ ...formValues, [input]: event.target.value });
   };
 
-  const handleSubmit = async () => {
-    if (formValues.email === "" || formValues.password === "") {
-      //Campos Vacios
-    //   return toast.error("Todos los campos son obligatorios", {
-    //     theme: "dark",
-    //   });
-        alert('Todos los campos son obligatorios');
-    }
-    if (!validateEmail(formValues.email)) {
-      //email no valido
-      alert('Email invalido')
-    //   return toast.error("Email invalido", {
-    //     theme: "dark",
-    //   });
-    }
-    //Realizar solicitud a la API
-    
-  };
+  
 
   return (
     <div className="flex justify-center items-center h-screen bg-backgroundNormal">
@@ -89,7 +74,7 @@ function Login() {
         </form>
         {/* <!-- Login Button --> */}
         <button
-          onClick={() => handleSubmit()}
+          onClick={() => {signIn().then(navigation('/'))}}
           className="bg-gray-500 hover:shadow-lg hover:shadow-blue-600 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-5"
         >
           INICIAR SESION
@@ -103,7 +88,7 @@ function Login() {
               className="hover:underline text-blue-500"
               onClick={()=>navigation('Home')}
             >
-              Solicitala
+              Registrate
             </a>
           </p>
         </div>

@@ -21,7 +21,7 @@ export default function Header() {
 
   const location = useLocation();
 
-  const {state} = useAuth();
+  const {state,signOut} = useAuth();
 
   const navigate = useNavigate();
 
@@ -117,12 +117,12 @@ export default function Header() {
                       </MenuItem>
                       <MenuItem>
                         {({ active }) => (
-                          <a
-                            href="#"
+                          <button
+                            onClick={()=>{signOut().then(navigate('/'))}}
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Sign out
-                          </a>
+                          </button>
                         )}
                       </MenuItem>
                     </MenuItems>

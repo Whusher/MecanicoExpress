@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }) => {
           return {
             ...prevState,
             userToken: null,
+            emailUser: null,
             isSignOut: true,
           };
         case "RESTORE_TOKEN":
@@ -41,17 +42,14 @@ export const AuthProvider = ({ children }) => {
   const authContext = useMemo(
     () => ({
       state,
-      signIn: async (token) => {
-        // Receive the token as an argument
-        // Logic for log in
-        console.log(token);
-        dispatch({ type: "SIGN_IN", token: "pollito", email: 'pollito@mail.com' }); // Update state with the received token
-        console.log("INICIO SESION UN cabron");
-        try {
-          //await SecureStore.setItemAsync("userToken", "pollito"); // Store the received token
-        } catch (err) {
-          console.log(err);
-        }
+      signIn: async (loginData) => {
+        // Mostramos la data que nos llega desde el formulario
+        console.log(loginData);
+        //Forzamos el error
+        let error = 'fallo'
+        throw error;
+        //Despachamos el estado cuando se cumpla el inicio de sesion segun la API
+        //dispatch({ type: "SIGN_IN", token: "pollito", email: 'pollito@mail.com' }); // Update state with the received token
       },
       signOut: async () => {
         // Logic for close session delete no necessary items

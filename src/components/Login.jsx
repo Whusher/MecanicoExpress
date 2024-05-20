@@ -1,10 +1,10 @@
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 //import { ToastContainer, toast } from "react-toastify";
 //import { validateEmail } from "../utils/ValidationMail";
 import { useAuth } from "../contexts/AuthContext";
 function Login() {
-  const {signIn} = useAuth();
+  const { signIn } = useAuth();
 
   const navigation = useNavigate();
   //Declaracion de objeto formulario
@@ -16,22 +16,28 @@ function Login() {
     setFormValues({ ...formValues, [input]: event.target.value });
   };
 
-  
+  const handleSubmmit = () => {
+    signIn(formValues)
+      .then(navigation("/"))
+      .catch((err) => {
+        alert("No pudiste iniciar sesion");
+        console.log(err);
+        navigation('/login')
+      });
+  };
 
   return (
     <div className="flex justify-center items-center h-screen bg-backgroundNormal">
       {/* <!-- Left: Image --> */}
       <div className="w-1/2 h-screen hidden lg:flex justify-center items-center bg-white">
-        <img
-          src='/login.png'
-          alt=""
-          className="object-cover h-full"
-        />
+        <img src="/login.png" alt="" className="object-cover h-full" />
       </div>
       {/* <!-- Right: Login Form --> */}
       <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2 bg-backgroundNormal">
-        <h1 className="text-6xl font-sans mb-4 text-white font-semibold">Mecánico Express Querétaro</h1>
-        <form >
+        <h1 className="text-6xl font-sans mb-4 text-white font-semibold">
+          Mecánico Express Querétaro
+        </h1>
+        <form>
           {/* <!-- Username Input --> */}
           <div className="mb-4">
             <label htmlFor="username" className="block text-white">
@@ -74,7 +80,7 @@ function Login() {
         </form>
         {/* <!-- Login Button --> */}
         <button
-          onClick={() => {signIn().then(navigation('/'))}}
+          onClick={handleSubmmit}
           className="bg-gray-500 hover:shadow-lg hover:shadow-blue-600 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-5"
         >
           INICIAR SESION
@@ -86,7 +92,7 @@ function Login() {
             <a
               href="mailto:syncro_cargo@gmail.com"
               className="hover:underline text-blue-500"
-              onClick={()=>navigation('Home')}
+              onClick={() => navigation("Home")}
             >
               Registrate
             </a>

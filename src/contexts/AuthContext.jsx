@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
             emailUser: action.email
           };
         case "SIGN_OUT":
-          return {
+          return {  
             ...prevState,
             userToken: null,
             emailUser: null,
@@ -46,10 +46,10 @@ export const AuthProvider = ({ children }) => {
         // Mostramos la data que nos llega desde el formulario
         console.log(loginData);
         //Forzamos el error
-        let error = 'fallo'
-        throw error;
+        //let error = 'fallo'
+        //throw error;
         //Despachamos el estado cuando se cumpla el inicio de sesion segun la API
-        //dispatch({ type: "SIGN_IN", token: "pollito", email: 'pollito@mail.com' }); // Update state with the received token
+        dispatch({ type: "SIGN_IN", token: "pollito", email: loginData.email }); // Update state with the received token
       },
       signOut: async () => {
         // Logic for close session delete no necessary items

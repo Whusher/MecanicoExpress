@@ -90,9 +90,9 @@ function Login() {
           <p className="text-white">
             Aun no tienes cuenta?{" "}
             <a
-              href="mailto:syncro_cargo@gmail.com"
+              //href="mailto:syncro_cargo@gmail.com"
               className="hover:underline text-blue-500"
-              onClick={() => navigation("Home")}
+              onClick={() => navigation("/registro")}
             >
               Registrate
             </a>

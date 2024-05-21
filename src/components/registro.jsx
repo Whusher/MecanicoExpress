@@ -127,7 +127,7 @@ function Register() {
         </div>
       </div>
       {/* Right: Image */}
-      <div className="w-full lg:w-1/2 h-screen hidden lg:flex justify-center items-center bg-white">
+      <div className="w-full lg:w-1/2 h-screen hidden lg:flex justify-center items-center">
         <img src="/registro.png" alt="" className="object-cover h-full" />
       </div>
     </div>

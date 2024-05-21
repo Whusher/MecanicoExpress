@@ -8,9 +8,9 @@ function Promociones() {
             <h1 className="text-2xl flex justify-center font-bold mb-4">
                 CONOCE LAS PROMOCIONES QUE MÉCANICO EXPRESS TIENE PARA TÍ
             </h1>
-            <div className="flex flex-col items-center px-4 py-8 bg-gray-100">
+            
                 {/* Contenedor de la promoción */}
-                <div className="w-full max-w-4xl mb-8 p-8 bg-black rounded-2xl shadow-lg flex justify-between items-center">
+                <div className="w-full max-w-4xl p-8 bg-black rounded-lg shadow-lg flex justify-between items-center mx-auto">
                     {/* Columna izquierda */}
                     <div className="w-1/2 p-4">
                         <h1 className="text-4xl text-white font-bold mb-4">Servicio completo</h1>
@@ -31,8 +31,7 @@ function Promociones() {
                         <img src="/promo.png" alt="Promoción" className="object-cover h-full rounded-lg shadow-lg" />
                     </div>
                 </div>
-                {/* Añadir más contenedores de promociones aquí */}
-            </div>
+            
             <Footer />
         </>
     );

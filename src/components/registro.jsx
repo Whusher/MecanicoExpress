@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 
-function Register() {
+function Registro() {
   const { signUp } = useAuth();
   const navigate = useNavigate();
   const [formValues, setFormValues] = useState(initializeForm());
@@ -144,4 +144,4 @@ function initializeForm() {
   };
 }
 
-export default Register;
+export default Registro;

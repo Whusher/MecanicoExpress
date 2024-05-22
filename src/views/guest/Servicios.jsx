@@ -1,6 +1,6 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { useAuth } from "../contexts/AuthContext";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import { useAuth } from "../../contexts/AuthContext";
 function Servicios() {
     const {state} = useAuth()
     return (

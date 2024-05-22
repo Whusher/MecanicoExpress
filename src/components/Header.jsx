@@ -11,6 +11,7 @@ const navigation = [
   { name: 'SERVICIOS', href: '/servicios', current: false }, 
   { name: 'PROMOCIONES', href: '/promociones', current: false }, 
   { name: 'REFACCIONES', href: '/refacciones', current: false }, 
+  { name: 'CONOCENOS', href: '/nosotros', current: false }, 
 ];
 
 function classNames(...classes) {
@@ -26,7 +27,7 @@ export default function Header() {
   const navigate = useNavigate();
 
   return (
-    <Disclosure as="nav" className="bg-backgroundNormal">
+    <Disclosure as="nav" className="bg-backgroundNormal mb-4">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -76,13 +77,10 @@ export default function Header() {
                     <Menu as="div" className="relative ml-3">
                   <div>
                     <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <span className='hidden md:inline text-white font-sans px-4'>Hola! <strong>{state.nameUser}</strong></span>
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
+                      <ComponentSVG.Usuario/>
                     </MenuButton>
                   </div>
                   <Transition
@@ -101,7 +99,7 @@ export default function Header() {
                             href="#"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Your Profile
+                            Mi Perfil
                           </a>
                         )}
                       </MenuItem>
@@ -111,7 +109,7 @@ export default function Header() {
                             href="#"
                             className={classNames(active ? 'drop-shadow-xl' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Settings
+                            Configuracion
                           </a>
                         )}
                       </MenuItem>
@@ -121,7 +119,7 @@ export default function Header() {
                             onClick={()=>{signOut().then(navigate('/'))}}
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Sign out
+                            Cerrar Sesion
                           </button>
                         )}
                       </MenuItem>

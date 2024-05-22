@@ -1,12 +1,14 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 //Pages Guest
-import Home from './views/MainContent'; 
-import Servicios from './views/Servicios';
-import Promociones from './views/Promociones';
+import Home from './views/guest/MainContent'; 
+import Servicios from './views/guest/Servicios';
+import Promociones from './views/guest/Promociones';
 import Login from './components/Login';
-import Registro from './components/registro';
-import Refacciones from './views/Refac';
+import Registro from './components/Registro';
+import Refacciones from './views/guest/Refac';
+import Citas from './views/guest/Citas';
+import Nosotros from './views/guest/Nosotros';
 //Pages User Logged
 
 //Context API
@@ -20,13 +22,16 @@ function App() {
         <Route path="/" element={<Home />} />
         {
           state.userToken ?(
-            <Route path="/servicios" element={<Servicios />} />
+            <Route path="/" element={<h1>Holaaa</h1>} />
           ):(
             <>
+            <Route path="/servicios" element={<Servicios />} />
             <Route path="/login" element={<Login />} />
             <Route path="/promociones" element={<Promociones />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/refacciones" element={<Refacciones />} />
+            <Route path="/citas" element={<Citas />} />
+            <Route path="/nosotros" element={<Nosotros />} />
             </>
           )
         }

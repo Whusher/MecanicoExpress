@@ -30,7 +30,7 @@ function Login() {
     <div className="flex justify-center items-center h-screen bg-backgroundNormal">
       {/* <!-- Left: Image --> */}
       <div className="w-1/2 h-screen hidden lg:flex justify-center items-center bg-white">
-        <img src="/login.png" alt="" className="object-cover h-full" />
+        <img src="/loginnn.png" alt="" className="object-cover h-full" />
       </div>
       {/* <!-- Right: Login Form --> */}
       <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2 bg-backgroundNormal">

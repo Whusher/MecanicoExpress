@@ -25,7 +25,7 @@ function Nosotros() {
         <div className="flex flex-col md:flex-row justify-between items-start w-full max-w-4xl gap-8">
           <div className="md:w-1/3 p-6 bg-white rounded-lg shadow-md border-t-4 border-red-700">
             <h2 className="text-3xl font-bold mb-4 text-blue-800">Misión</h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-black-600">
               Proveer servicios de mantenimiento y reparación automotriz de la más alta calidad, garantizando la seguridad y satisfacción de nuestros clientes.
             </p>
           </div>

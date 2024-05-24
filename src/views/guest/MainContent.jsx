@@ -29,7 +29,7 @@ function MainContent() {
         {/* Columna derecha (imagen) */}
         <div className="w-1/2 flex justify-center items-center">
           <img
-            src="/main.JPG"
+            src="/main.png"
             alt="Imagen"
             className="w-full max-w-2xl h-auto"
           />

@@ -6,7 +6,7 @@ function Nosotros() {
     <>
       <Header />
       <div className="relative flex flex-col items-center px-4 py-16 bg-gradient-to-r from-black-100 to-blue-300">
-        {/* Imagen de fondo */}
+        {/* Imagen difuminada de fondo */}
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/fondo.jpg')" }}>
           <div className="absolute inset-0 bg-black opacity-70"></div>
         </div>
@@ -23,12 +23,12 @@ function Nosotros() {
             En Mecánico Express Querétaro, nos apasiona ofrecer un servicio de alta calidad para asegurar que tu vehículo esté siempre en óptimas condiciones. Nuestro equipo de expertos está comprometido con la excelencia y la satisfacción del cliente.
           </p>
 
-          {/* Imagen */}
+          {/* Imagen del taller*/}
           <div className="w-full max-w-2xl mb-8 rounded-lg overflow-hidden">
             <img src="/taller.png" alt="Nuestro equipo" className="w-full h-auto rounded-lg shadow-lg" />
           </div>
 
-          {/* Misión, Visión y Valores */}
+          {/* Texto en recuadros */}
           <div className="flex flex-col md:flex-row justify-between items-start w-full max-w-4xl gap-8">
             <div className="md:w-1/3 p-6 bg-white rounded-lg shadow-md border-t-4 border-red-700">
               <h2 className="text-3xl font-bold mb-4 text-blue-800">Misión</h2>

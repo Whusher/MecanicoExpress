@@ -20,15 +20,17 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/registro" element={<Registro />} />
         {
           state.userToken ?(
-            <Route path="/" element={<h1>Holaaa</h1>} />
+            <>
+            <Route path="/pollo" element={<h1>Holaaa</h1>} />
+            </>
           ):(
             <>
             <Route path="/servicios" element={<Servicios />} />
-            <Route path="/login" element={<Login />} />
             <Route path="/promociones" element={<Promociones />} />
-            <Route path="/registro" element={<Registro />} />
             <Route path="/refacciones" element={<Refacciones />} />
             <Route path="/citas" element={<Citas />} />
             <Route path="/nosotros" element={<Nosotros />} />

@@ -1,4 +1,6 @@
 import React, { createContext, useReducer, useMemo } from "react";
+import { AuthService } from "../components/EndpointRoute";
+
 const AuthContext = createContext();
 
 export const useAuth = () => React.useContext(AuthContext);
@@ -14,10 +16,10 @@ export const AuthProvider = ({ children }) => {
             isSignOut: false,
             //Nombre provicional
             nameUser: action.name,
-            emailUser: action.email
+            emailUser: action.email,
           };
         case "SIGN_OUT":
-          return {  
+          return {
             ...prevState,
             userToken: null,
             emailUser: null,
@@ -46,13 +48,40 @@ export const AuthProvider = ({ children }) => {
     () => ({
       state,
       signIn: async (loginData) => {
-        // Mostramos la data que nos llega desde el formulario
-        console.log(loginData);
-        //Forzamos el error
-        //let error = 'fallo'
-        //throw error;
-        //Despachamos el estado cuando se cumpla el inicio de sesion segun la API
-        dispatch({ type: "SIGN_IN", token: "pollito", email: loginData.email, name: 'Angel Anaya' }); // Update state with the received token
+        try {
+          // Mostramos la data que nos llega desde el formulario
+          console.log("Login data:", loginData);
+
+          // Hacer la petición a la API
+          const response = await fetch(`${AuthService}/login`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              correo: loginData.email,
+              password: loginData.password,
+            }),
+          });
+          if (response.ok) {
+            const data = await response.json();
+            // Despachamos el estado cuando se cumpla el inicio de sesión según la API
+            dispatch({
+              type: "SIGN_IN",
+              token: data.token,
+              email: loginData.email,
+              name: data.name,
+            });
+            return true;
+          } else {
+            // const errorData = await response.json();
+            // console.error("Error:", errorData.message);
+            return false;
+          }
+        } catch (error) {
+          console.error("Fetch error:", error);
+          return false;
+        }
       },
       signOut: async () => {
         // Logic for close session delete no necessary items
@@ -65,9 +94,38 @@ export const AuthProvider = ({ children }) => {
         console.log("CERROOOOO SESION UN cabron");
       },
       signUp: async (data) => {
-        console.log(data);
-        // Logic for sign up
-        dispatch({ type: "SIGN_IN", token: "pollito" });
+        const capitalizeFirstLetter = (string) => {
+          if (!string) return "";
+          return string.charAt(0).toUpperCase() + string.slice(1);
+        };
+        try {
+          const response = await fetch(`${AuthService}/signup`, {
+            method: "POST", //POST ya que se hace la creacion de un elemento
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: data.email,
+              password: data.password,
+              telefono: parseInt(data.phone),
+              nombre: capitalizeFirstLetter(data.name),
+              apellido: capitalizeFirstLetter(data.surname),
+            }),
+          });
+          if (response.ok) {
+            dispatch({ //REQUIERE SETEO CON DATOS PROPORCIONADOS POR LA API
+              type: "SIGN_IN",
+              token: 'tokenExample', //Falta sacar el token de autenticacion de la sesion
+              email: data.email,
+              name: data.name,
+            });
+            return true;
+          } else {
+            return false;
+          }
+        } catch (err) {
+          return false;
+        }
       },
     }),
     [state]

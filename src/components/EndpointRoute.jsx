@@ -1,0 +1,1 @@
+export const AuthService = 'http://localhost:3000/auth';

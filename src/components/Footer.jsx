@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="bg-backgroundNormal md:fixed bottom-0 left-0 w-full z-10 mt-5">
       {/* Contenido para pantallas grandes */}
-      <div className="hidden md:flex w-full p-5 text-white">
+      <div className="hidden md:flex w-full h-16 p-5 text-white">
             <div className="flex items-center mr-auto ml-0">
               <BrandSVG.WhatsApp />
               <p className="mt-4 ml-2 text-xl">

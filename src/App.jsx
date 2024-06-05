@@ -5,7 +5,7 @@ import Home from './views/guest/MainContent';
 import Servicios from './views/guest/Servicios';
 import Promociones from './views/guest/Promociones';
 import Login from './components/Login';
-import Registro from './components/Registro';
+import Registro from './components/registro';
 import Refacciones from './views/guest/Refac';
 import Citas from './views/guest/Citas';
 import Nosotros from './views/guest/Nosotros';

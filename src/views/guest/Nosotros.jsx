@@ -5,7 +5,7 @@ function Nosotros() {
   return (
     <>
       <Header />
-      <div className="relative flex flex-col items-center px-4 py-16 bg-gradient-to-r from-black-100 to-blue-300">
+      <div className="relative flex flex-col items-center px-4 py-16 bg-gradient-to-r from-black-100 to-blue-300 min-h-screen pb-20">
         {/* Imagen difuminada de fondo */}
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/fondo.jpg')" }}>
           <div className="absolute inset-0 bg-black opacity-70"></div>
@@ -30,25 +30,32 @@ function Nosotros() {
 
           {/* Texto en recuadros */}
           <div className="flex flex-col md:flex-row justify-between items-start w-full max-w-4xl gap-8">
-            <div className="md:w-1/3 p-6 bg-white rounded-lg shadow-md border-t-4 border-red-700">
-              <h2 className="text-3xl font-bold mb-4 text-blue-800">Misión</h2>
-              <p className="text-lg text-gray-700">
+            <div className="md:w-1/3 p-6 rounded-lg shadow-md border-t-4 border-red-700 bg-gradient-to-t from-blue-500/70 to-red-500/90">
+              <h2 className="text-3xl font-bold mb-4 text-white">Misión</h2>
+              <p className="text-lg text-white">
                 Proveer servicios de mantenimiento y reparación automotriz de la más alta calidad, garantizando la seguridad y satisfacción de nuestros clientes.
               </p>
             </div>
-            <div className="md:w-1/3 p-6 bg-white rounded-lg shadow-md border-t-4 border-red-700">
-              <h2 className="text-3xl font-bold mb-4 text-blue-800">Visión</h2>
-              <p className="text-lg text-gray-700">
+            <div className="md:w-1/3 p-6 rounded-lg shadow-md border-t-4 border-red-700 bg-gradient-to-t from-blue-500/70 to-red-500/90">
+              <h2 className="text-3xl font-bold mb-4 text-white">Visión</h2>
+              <p className="text-lg text-white">
                 Ser el taller mecánico líder en Querétaro, reconocido por nuestra integridad, calidad y excelente servicio al cliente.
               </p>
             </div>
-            <div className="md:w-1/3 p-6 bg-white rounded-lg shadow-md border-t-4 border-red-700">
-              <h2 className="text-3xl font-bold mb-4 text-blue-800">Valores</h2>
-              <p className="text-lg text-gray-700">
+            <div className="md:w-1/3 p-6 rounded-lg shadow-md border-t-4 border-red-700 bg-gradient-to-t from-blue-500/70 to-red-500/90">
+              <h2 className="text-3xl font-bold mb-4 text-white">Valores</h2>
+              <p className="text-lg text-white">
                 Honestidad, responsabilidad, compromiso, y pasión por lo que hacemos.
               </p>
             </div>
           </div>
+        </div>
+        <div className="w-full md:w-1/2 md:pl-4">
+          <p className="text-lg">
+            <br />
+            <br />
+            <br />
+          </p>
         </div>
       </div>
       <Footer />

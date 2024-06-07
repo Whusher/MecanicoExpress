@@ -5,7 +5,7 @@ export default function Citas() {
   return (
     <>
       <Header />
-      <div className="w-full max-h-3/4 p-8 bg-backgroundNormal rounded-lg shadow-xl shadow-cyan-700 flex flex-col md:flex-row justify-between items-center mx-auto md:mb-20">
+      <div className="w-full max-h-3/4 p-8 bg-backgroundNormal rounded-lg shadow-xl shadow-cyan-700 flex flex-col md:flex-row justify-between items-center mx-auto md:mb-20 mt-10">
         <section className="text-white p-4 m-5 w-full md:w-1/2 text-lg">
           <h3 className="font-sans font-semibold text-2xl md:text-5xl my-5">
             Ahora puedes hacer tus citas aquí y acudir para cualquier servicio
@@ -31,7 +31,16 @@ export default function Citas() {
             className="w-full h-auto object-cover md:w-auto md:h-full"
           />
         </div>
+        {//Spacing truqueado  
+        }
       </div>
+        <div className="w-full md:w-1/2 md:pl-4">
+          <p className="text-lg">
+            <br />
+            <br />
+            <br />
+          </p>
+        </div>
       <Footer />
     </>
   );

@@ -27,7 +27,7 @@ export default function Header() {
   const navigate = useNavigate();
 
   return (
-    <Disclosure as="nav" className="bg-backgroundNormal mb-4">
+    <Disclosure as="nav" className="bg-backgroundNormal">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -140,8 +140,9 @@ export default function Header() {
           <DisclosurePanel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item) => (
-                <DisclosureButton
+                <Link
                   key={item.name}
+                  to={item.href}
                   as="a"
                   href={item.href}
                   className={classNames(
@@ -151,7 +152,7 @@ export default function Header() {
                   aria-current={item.current ? 'page' : undefined}
                 >
                   {item.name}
-                </DisclosureButton>
+                </Link>
               ))}
             </div>
           </DisclosurePanel>

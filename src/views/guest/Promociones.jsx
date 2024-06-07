@@ -57,11 +57,11 @@ function Promociones() {
     <>
       <Header />
       <main className="flex flex-col min-h-screen md:mb-40">
-        <h1 className="text-2xl flex justify-center font-bold mb-4">
-          CONOCE LAS PROMOCIONES QUE MÉCANICO EXPRESS TIENE PARA TÍ
+        <h1 className="text-2xl flex justify-center font-bold m-4">
+          CONOCE LAS PROMOCIONES QUE MECÁNICO EXPRESS TIENE PARA TÍ
         </h1>
         <div className="flex-grow">
-          <ShowPromotions/>
+          <ShowPromotions />
         </div>
       </main>
       <Footer />
@@ -69,29 +69,32 @@ function Promociones() {
   );
 }
 
-function ShowPromotions({ colorBackground = 'bg-black', colorFont = 'text-white' }) { //Complejidad O grande es de O(n2)
+function ShowPromotions({ colorBackground = 'bg-gradient-to-t from-zinc-600 to-gray-900', colorFont = 'text-white' }) {
   return (
-    promotions.map((promocion, index) => (
-      <div key={index} className={`${colorBackground} w-full max-w-4xl rounded-xl shadow-lg flex justify-between items-center mx-auto my-4`}>
-        <div className="w-1/2 p-4">
-          <h1 className={`${colorFont} text-4xl font-bold mb-4`}>{promocion.title}</h1>
-          <p className="text-lg text-white mb-6">{promocion.description}</p>
-          <ol className={`list-disc ${colorFont} m-3 ml-5`}>
-            <span className="text-red-400 font-semibold">Incluye:</span>
-            {promocion.details.map((item, index) => <li key={index}>{item}</li>)}
-          </ol>
-          <button className="bg-blue-700 hover:bg-blue-900 text-white text-s font-bold py-2 px-4 rounded-xl mb-4">
-            Agendar servicio
-          </button>
-          <p className="text-lg text-white text-center">
-             <span className="font-bold text-3xl">${promocion.price}.00 MXN</span><p className="text-red-200/50 line-through ml-4 md:inline">${promocion.price + parseInt(promocion.price/2)}.00 MXN</p>
-          </p>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {promotions.map((promocion, index) => (
+        <div key={index} className={`${colorBackground} w-full max-w-4xl rounded-xl shadow-xl flex flex-col md:flex-row justify-between items-center mx-auto my-4 hover:shadow-gray-800`}>
+          <div className="w-full md:w-1/2 p-4">
+            <h1 className={`${colorFont} text-4xl font-bold mb-4`}>{promocion.title}</h1>
+            <p className="text-lg text-white mb-6">{promocion.description}</p>
+            <ol className={`list-disc ${colorFont} m-3 ml-5`}>
+              <span className="text-red-500 font-semibold">Incluye:</span>
+              {promocion.details.map((item, index) => <li key={index}>{item}</li>)}
+            </ol>
+            <button className="transition ease-in-out delay-150 hover:translate-y-2 hover:scale-110 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl shadow-xl mb-4">
+              Agendar servicio
+            </button>
+            <div className="text-lg text-white text-center">
+              <span className="font-bold text-3xl">${promocion.price}.00 MXN</span>
+              <p className="text-red-500/70 line-through ml-4 md:inline">${promocion.price + parseInt(promocion.price/2)}.00 MXN</p>
+            </div>
+          </div>
+          <div className="w-full md:w-1/2 flex justify-center items-center p-4">
+            <img src={promocion.image} alt="Promoción" className="object-cover h-full rounded-lg shadow-lg" />
+          </div>
         </div>
-        <div className="w-1/2 flex justify-center items-center p-4">
-          <img src={promocion.image} alt="Promoción" className="object-cover h-full rounded-lg shadow-lg" />
-        </div>
-      </div>
-    ))
+      ))}
+    </div>
   );
 }
 

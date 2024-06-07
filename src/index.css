@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.logo-image {
+    object-fit: contain; /* Mantiene la relación de aspecto y ajusta la imagen dentro del contenedor */
+    background-color: transparent; /* Quita el fondo blanco del contenedor */
+}
+  

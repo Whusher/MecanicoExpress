@@ -5,12 +5,12 @@ import Home from './views/guest/MainContent';
 import Servicios from './views/guest/Servicios';
 import Promociones from './views/guest/Promociones';
 import Login from './components/Login';
-import Registro from './components/registro';
+import Registro from './components/Registro';
 import Refacciones from './views/guest/Refac';
 import Citas from './views/guest/Citas';
 import Nosotros from './views/guest/Nosotros';
 //Pages User Logged
-
+import UserDates from './views/loggedUser/UserDates';
 //Context API
 import { useAuth } from './contexts/AuthContext';
 
@@ -25,7 +25,7 @@ function App() {
         {
           state.userToken ?(
             <>
-            <Route path="/pollo" element={<h1>Holaaa</h1>} />
+            <Route path="/citas" element={<UserDates/>} />
             </>
           ):(
             <>

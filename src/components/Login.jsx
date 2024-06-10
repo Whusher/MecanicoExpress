@@ -45,8 +45,8 @@ function Login() {
 
   return (
     <div className="flex justify-center items-center h-screen bg-backgroundNormal">
-      <div className="w-1/2 h-screen hidden lg:flex justify-center items-center bg-white">
-        <img src="/loginnn.png" alt="" className="object-cover h-full" />
+      <div className="w-1/2 h-screen hidden lg:flex justify-center items-center bg-200-blue">
+        <img src="/loginn.png" alt="" className="object-cover h-full" />
       </div>
       <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2 bg-backgroundNormal">
         <h1 className="text-6xl font-sans mb-4 text-white font-semibold">
@@ -54,7 +54,7 @@ function Login() {
         </h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="username" className="block text-white">
+            <label htmlFor="username" className="block font-semibold text-white">
               Correo electrónico
             </label>
             <input
@@ -68,7 +68,7 @@ function Login() {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="password" className="block text-white">
+            <label htmlFor="password" className="block font-semibold text-white">
               Contraseña
             </label>
             <input

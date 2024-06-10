@@ -73,7 +73,7 @@ function Registro() {
         <form>
           {/* Nombre */}
           <div className="mb-4">
-            <label htmlFor="name" className="block text-white">
+            <label htmlFor="name" className="block font-semibold text-white">
               Nombre
             </label>
             <input
@@ -88,7 +88,7 @@ function Registro() {
           </div>
           {/* Apellido */}
           <div className="mb-4">
-            <label htmlFor="surname" className="block text-white">
+            <label htmlFor="surname" className="block font-semibold text-white">
               Apellido
             </label>
             <input
@@ -103,7 +103,7 @@ function Registro() {
           </div>
           {/* Teléfono */}
           <div className="mb-4">
-            <label htmlFor="phone" className="block text-white">
+            <label htmlFor="phone" className="block font-semibold text-white">
               Teléfono
             </label>
             <input

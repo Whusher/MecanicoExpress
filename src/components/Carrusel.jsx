@@ -15,7 +15,7 @@ const ImageCarousel = () => {
       navigation
       pagination={{ clickable: true }}
       scrollbar={{ draggable: true }}
-      autoplay={{ delay: 1500, disableOnInteraction: false }}
+      autoplay={{ delay: 1000, disableOnInteraction: false }}
       onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log('slide change')}
     >
@@ -30,6 +30,15 @@ const ImageCarousel = () => {
       </SwiperSlide>
       <SwiperSlide>
         <img src="/toyota.jpg" alt="Image 4" className="w-full h-96 object-cover"/>
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src="/nissan.jpg" alt="Image 5" className="w-full h-96 object-cover"/>
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src="/jeep.jpg" alt="Image 6" className="w-full h-96 object-cover"/>
+      </SwiperSlide>  
+      <SwiperSlide>
+        <img src="/honda.jpg" alt="Image 8" className="w-full h-96 object-cover"/>
       </SwiperSlide>
     </Swiper>
   );

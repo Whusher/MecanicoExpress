@@ -1,6 +1,6 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-
+import WorkingPage from "../../utils/WorkingPage";
 const promotions = [
   {
     title: "Servicio Completo",
@@ -56,14 +56,15 @@ function Promociones() {
   return (
     <>
       <Header />
-      <main className="flex flex-col min-h-screen md:mb-40">
+      <WorkingPage/>
+      {/* <main className="flex flex-col min-h-screen md:mb-40">
         <h1 className="text-2xl flex justify-center font-bold m-4">
           CONOCE LAS PROMOCIONES QUE MECÁNICO EXPRESS TIENE PARA TÍ
         </h1>
         <div className="flex-grow">
           <ShowPromotions />
         </div>
-      </main>
+      </main> */}
       <Footer />
     </>
   );

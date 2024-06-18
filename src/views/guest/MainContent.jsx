@@ -15,13 +15,13 @@ function MainContent() {
           {/* Columna izquierda para el contenido */}
           <div className="w-1/2 text-center max-w-2xl mx-auto px-4 ">
             <h1 className="md:text-5xl font-bold text-blue-700 text-2xl">Mecánico Express</h1>
-            <h2 className="text-2xl font-bold mb-3 text-red-700">Taller Mecánico en Querétaro</h2>
-            <h3 className="text-lg mb-4 font-semibold text-black">MECÁNICO EXPRESS “TE DA LO QUE NECESITAS”</h3>
+            <h2 className="md:text-2xl text-lg font-bold mb-3 text-red-700 ">Taller Mecánico en Querétaro</h2>
+            <h3 className="text-lg mb-4 font-semibold md:text-black text-red-700">MECÁNICO EXPRESS “TE DA LO QUE NECESITAS”</h3>
 
-            <p className="text-m mb-2 font-semibold text-black">
+            <p className="text-m mb-2 font-semibold text-black hidden md:block">
               Nuestra visión es lograr que todos nuestros clientes manejen seguros.
             </p>
-            <p className="text-m mb-10 font-semibold text-black">
+            <p className="text-m mb-10 font-semibold text-black ">
               Atendemos las marcas Chevrolet, GMC, VW, Nissan, Ford, Chrysler, Dodge, Jeep, Honda, Toyota kya.
             </p>
             <Link to="/CitasForm">
@@ -93,53 +93,53 @@ function MainContent() {
                   Ver en maps
                 </button>
               </a>
-              </div>
+            </div>
 
             {/* Recuadros debajo de las imágenes */}
             <div className="max-w-7xl mx-auto px-4 py-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div className="bg-white shadow-lg rounded-lg p-6 text-center border-2 border-blue-900 bg-gradient-to-tr from-red-600 via-blue-600 to-red-600">
+                <div className="shadow-lg rounded-lg p-6 text-center border-1 border-blue-900 bg-gradient-to-tr from-red-600/30 via-blue-600/70 to-red-600/80">
                   <h3 className="text-2xl font-bold mb-4 text-gray-100">Nosotros somos tu SENTIR</h3>
-                  <p className="text-lg text-black">
+                  <p className="text-lg text-white">
                     Aquí recibes siempre una atención afectuosa, cálida y amable.<br />
                     Nuestros empleados están siempre limpios al igual que nuestras instalaciones.
                   </p>
                 </div>
-                <div className="bg-white shadow-lg rounded-lg p-6 text-center border-2 border-blue-900 bg-gradient-to-tr from-red-600/80 via-blue-600/80 to-red-600/80">
+                <div className="shadow-lg rounded-lg p-6 text-center border-1 border-blue-900 bg-gradient-to-tr from-red-600/30 via-blue-600/70 to-red-600/80">
                   <h3 className="text-2xl font-bold mb-4 text-gray-100">Ven a VER</h3>
-                  <p className="text-lg text-black">
+                  <p className="text-lg text-white">
                     Las entregas las hacemos en tiempo y forma,<br />
                     los autos están bien limpios.
                   </p>
                 </div>
-                <div className="bg-white shadow-lg rounded-lg p-6 text-center border-2 border-blue-900 bg-gradient-to-tr from-red-600 via-blue-600 to-red-600">
+                <div className="shadow-lg rounded-lg p-6 text-center border-1 border-blue-900 bg-gradient-to-tr from-red-600/30 via-blue-600/70 to-red-600/80">
                   <h3 className="text-2xl font-bold mb-4 text-gray-100">Nos vas a ESCUCHAR</h3>
-                  <p className="text-lg text-black">
-                    Te llamamos para informarte el estado de tu auto y el plus de tu revisión.<br />cls
+                  <p className="text-lg text-white">
+                    Te llamamos para informarte el estado de tu auto y el plus de tu revisión.<br />
                     Te hacemos llamada de seguimiento y recordamos tu servicio.
                   </p>
                 </div>
-                <div className="bg-white shadow-lg rounded-lg p-6 text-center border-4 border-blue-900 bg-gradient-to-tr from-red-600 via-blue-600 to-red-600">
+                <div className="shadow-lg rounded-lg p-6 text-center border-1 border-blue-900 bg-gradient-to-tr from-red-600/30 via-blue-600/70 to-red-600/80">
                   <h3 className="text-2xl font-bold mb-4 text-gray-100">Porque quieres VIVIRLO</h3>
-                  <p className="text-lg text-black">
+                  <p className="text-lg text-white">
                     Nuestros empleados están siempre limpios al igual que nuestras instalaciones.
                   </p>
                 </div>
-                <div className="bg-white shadow-lg rounded-lg p-6 text-center border-4 border-blue-900 bg-gradient-to-tr from-red-600 via-blue-600 to-red-600">
+                <div className="shadow-lg rounded-lg p-6 text-center border-1 border-blue-900 bg-gradient-to-tr from-red-600/30 via-blue-600/70 to-red-600/80">
                   <h3 className="text-2xl font-bold mb-4 text-gray-100">Esto te da CONVICCIÓN</h3>
-                  <p className="text-lg text-black">
+                  <p className="text-lg text-white">
                     Que en la entrega no quede ninguna duda de todo lo que se le hizo al auto.
                   </p>
                 </div>
-                <div className="bg-white shadow-lg rounded-lg p-6 text-center border-4 border-blue-900 bg-gradient-to-tr from-red-600 via-blue-600 to-red-600">
+                <div className="shadow-lg rounded-lg p-6 text-center border-1 border-blue-900 bg-gradient-to-tr from-red-600/30 via-blue-600/70 to-red-600/80">
                   <h3 className="text-2xl font-bold mb-4 text-gray-100">Vas a DISFRUTAR</h3>
-                  <p className="text-lg text-black">
+                  <p className="text-lg text-white">
                     Te vas a llevar tu auto con la certeza de que todo va a estar bien.
                   </p>
                 </div>
-                <div className="bg-white shadow-lg rounded-lg p-6 text-center border-4 border-blue-900 bg-gradient-to-tr from-red-600 via-blue-600 to-red-600 col-span-1 md:col-span-2 lg:col-span-3">
+                <div className="shadow-lg rounded-lg p-6 text-center border-1 border-blue-900 bg-gradient-to-tr from-red-600/30 via-blue-600/70 to-red-600/80 col-span-1 md:col-span-2 lg:col-span-3">
                   <h3 className="text-2xl font-bold mb-4 text-gray-100">Los clientes que se van por precio, regresan por el servicio</h3>
-                  <p className="text-lg text-black">
+                  <p className="text-lg text-white">
                     “UN CLIENTE ES UNA PERSONA FELIZ DE RECIBIR LO QUE LE PODEMOS DAR”
                   </p>
                 </div>

@@ -207,7 +207,7 @@ function Registro() {
         </div>
       </div>
       {/* Right: Image */}
-      <div className="w-full lg:w-1/2 h-screen flex lg:h-full hidden lg:flex justify-center items-center bg-backgroundNormal">
+      <div className="w-full lg:w-1/2 h-screen flex lg:h-full hidden lg:flex justify-center items-center bg-backgroundRegister">
         <img src="/registro.png" alt="" className="object-cover h-full" />
       </div>
     </div>

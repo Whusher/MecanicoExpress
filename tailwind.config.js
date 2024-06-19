@@ -10,7 +10,8 @@ export default {
         transparent: 'transparent',
         current: 'currentColor',
         backgroundNormal: '#1B1A1A',
-        buttons: '#00ABFB'
+        buttons: '#00ABFB',
+        backgroundRegister: 'EB3E39'
       },
     },
   },

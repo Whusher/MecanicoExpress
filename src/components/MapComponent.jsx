@@ -1,4 +1,3 @@
-// MapComponent.jsx
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -15,17 +14,15 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 });
 
-const MapComponent = () => {
+const MapComponent = ({ center, position, popupText }) => {
   return (
-    <MapContainer center={[20.575973372105214, -100.39421185362986]} zoom={9} style={{ height: '500px', width: '100%' }}>
+    <MapContainer center={center} zoom={15} style={{ height: '500px', width: '100%' }}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      <Marker position={[20.575973372105214, -100.39421185362986]}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
+      <Marker position={position}>
+        <Popup>{popupText}</Popup>
       </Marker>
     </MapContainer>
   );

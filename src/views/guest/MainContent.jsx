@@ -79,20 +79,51 @@ function MainContent() {
             </div>
 
             {/*Contenedor para mapa*/}
-            <div className="map-section">
-              <h1 className="flex justify-center font-bold text-2xl text-white mb-4">Visitanos en el taller mecanico!</h1>
-                <div className="mb-2">
-                <MapComponent />
+            <div className="max-w-7xl mx-auto px-4 py-8">
+              <h1 className="flex justify-center font-bold text-2xl text-white mb-8">¡Visítanos en nuestras sucursales!</h1>
+              <div className="flex flex-col md:flex-row md:space-x-8">
+                {/* Primera ubicación */}
+                <div className="w-full md:w-1/2 mb-8 md:mb-0">
+                  <h1 className="text-lg font-semibold text-white">Sucursal de Casa Blanca</h1>
+                  <div className="mb-4">
+                    <MapComponent
+                      center={[20.576156, -100.394317]}
+                      position={[20.576156, -100.394317]}
+                      popupText="Ubicacion de casa blanca"
+                    />
+                  </div>
+                  <a
+                    href="https://www.google.com.mx/maps/place/Chevy+Center+Plus/@20.5753614,-100.3945704,19.32z/data=!4m15!1m8!3m7!1s0x85d344d80c688ba1:0x223933f176c287d!2sRoque+Rubio+114,+Casa+Blanca,+76030+Santiago+de+Quer%C3%A9taro,+Qro.!3b1!8m2!3d20.5759145!4d-100.3943167!16s%2Fg%2F11cncjjq5q!3m5!1s0x85d344d80db378a9:0x9ba759d5325a2a17!8m2!3d20.5759396!4d-100.3943376!16s%2Fg%2F11csp7kq1w?entry=ttu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="transition ease-in-out delay-150 hover:translate-y-2 hover:scale-110 hover:shadow-blue-300 bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl shadow-xl">
+                      Ver en maps
+                    </button>
+                  </a>
                 </div>
-              <a
-                href="https://www.google.com.mx/maps/place/Chevy+Center+Plus/@20.5753614,-100.3945704,19.32z/data=!4m15!1m8!3m7!1s0x85d344d80c688ba1:0x223933f176c287d!2sRoque+Rubio+114,+Casa+Blanca,+76030+Santiago+de+Quer%C3%A9taro,+Qro.!3b1!8m2!3d20.5759145!4d-100.3943167!16s%2Fg%2F11cncjjq5q!3m5!1s0x85d344d80db378a9:0x9ba759d5325a2a17!8m2!3d20.5759396!4d-100.3943376!16s%2Fg%2F11csp7kq1w?entry=ttu"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className="transition ease-in-out delay-150 hover:translate-y-2 hover:scale-110 hover:shadow-blue-300 bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl shadow-xl mb-4">
-                  Ver en maps
-                </button>
-              </a>
+
+                {/* Segunda ubicación */}
+                <div className="w-full md:w-1/2">
+                  <div className="mb-4">
+                    <h1 className="text-lg font-semibold text-white">Sucursal de Satelite</h1>
+                    <MapComponent
+                      center={[20.638605, -100.447008]}
+                      position={[20.638605, -100.447008]}
+                      popupText="Ubicacion de satelite."
+                    />
+                  </div>
+                  <a
+                    href="https://www.google.com/maps/place/20%C2%B038'18.5%22N+100%C2%B026'49.2%22W/@20.6384698,-100.4495832,17z/data=!3m1!4b1!4m4!3m3!8m2!3d20.6384698!4d-100.4470083?entry=ttu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="transition ease-in-out delay-150 hover:translate-y-2 hover:scale-110 hover:shadow-blue-300 bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl shadow-xl">
+                      Ver en maps
+                    </button>
+                  </a>
+                </div>
+              </div>
             </div>
 
             {/* Recuadros debajo de las imágenes */}

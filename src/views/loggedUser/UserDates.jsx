@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import LogoList from "../../assets/CarLogo.json";
 import { ComponentSVG } from "../../assets/ComponentSVG";
+import { Link } from "react-router-dom";
 
 const marcas = {
   chevrolet: "Chevrolet",
@@ -20,6 +21,69 @@ const marcas = {
 
 export default function UserDates() {
   const [marca, setMarca] = useState("");
+  const [formData, setFormData] = useState({
+    nombre: "",
+    tipo: "",
+    año: "",
+    modelo: "",
+    correo: "",
+    numero: "",
+    fecha: "",
+    hora: "",
+    cliente_id: "", // Añade el ID del cliente
+    sucursal_id: "", // Añade el ID de la sucursal
+    servicio_id: "", // Añade el ID del servicio
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('/api/appointments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error en la solicitud al servidor');
+      }
+
+      const data = await response.json();
+      
+      if (data.message === 'Cita registrada con éxito') {
+        alert('Cita registrada con éxito');
+        // Limpiar el formulario o redirigir a otra página
+        setFormData({
+          nombre: "",
+          tipo: "",
+          año: "",
+          modelo: "",
+          correo: "",
+          numero: "",
+          fecha: "",
+          hora: "",
+          cliente_id: "",
+          sucursal_id: "",
+          servicio_id: "",
+        });
+      } else {
+        alert('Error al registrar la cita');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error al registrar la cita');
+    }
+  };
 
   // Indexar las marcas por nombre para mejorar la búsqueda
   const indexedMarcas = useMemo(() => {
@@ -29,19 +93,24 @@ export default function UserDates() {
     });
     return indexed;
   }, []);
-  const selectedLogo = indexedMarcas[marca.toLowerCase()]; // Buscar el logo seleccionado
-  const [time, setCurrentTime] = useState(null);
+
+  const selectedLogo = indexedMarcas[marca.toLowerCase()];
+
   return (
     <>
       <Header />
       <nav className="flex justify-center bg-backgroundNormal ">
-        <button className="mx-10 px-4 hover:text-cyan-400 font-sans font-semibold text-white hover:rounded-xl p-3 mb-2">
-          <ComponentSVG.HistorialDates /> Historial
-        </button>
-        <button className="mx-10 px-4 hover:text-cyan-400 font-sans font-semibold text-white hover:rounded-xl p-3 mb-2">
-          <ComponentSVG.Dates24h />
-          Mis citas
-        </button>
+        <Link to="/History">
+          <button className="mx-10 px-4 hover:text-cyan-400 font-sans font-semibold text-white hover:rounded-xl p-3 mb-2">
+            <ComponentSVG.HistorialDates /> Historial
+          </button>
+        </Link>
+        <Link to="/CitasUsers">
+          <button className="mx-10 px-4 hover:text-cyan-400 font-sans font-semibold text-white hover:rounded-xl p-3 mb-2">
+            <ComponentSVG.Dates24h />
+            Mis citas
+          </button>
+        </Link>
       </nav>
       <div
         className="min-h-screen w-full flex items-center justify-center bg-cover bg-center"
@@ -52,20 +121,22 @@ export default function UserDates() {
             <h2 className="text-zinc-100 text-3xl py-3 font-bold text-center">
               Agenda tu cita
             </h2>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label
-                  htmlFor="servicio"
+                  htmlFor="tipo"
                   className="block text-white font-semibold"
                 >
                   Servicio
                 </label>
                 <input
                   type="text"
-                  id="servicio"
-                  name="servicio"
+                  id="tipo"
+                  name="tipo"
                   className="w-full p-2 border border-white font-semibold rounded mt-1"
                   placeholder="Describe el servicio requerido"
+                  value={formData.tipo}
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-4">
@@ -81,50 +152,61 @@ export default function UserDates() {
                   name="nombre"
                   className="w-full p-2 border border-white font-semibold rounded mt-1"
                   placeholder="Tu nombre"
+                  value={formData.nombre}
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-4">
                 <label
-                  htmlFor="email"
+                  htmlFor="correo"
                   className="block text-white font-semibold"
                 >
                   Email
                 </label>
                 <input
                   type="email"
-                  id="email"
-                  name="email"
+                  id="correo"
+                  name="correo"
                   className="w-full p-2 border border-gray-300 rounded mt-1"
                   placeholder="Tu email"
+                  value={formData.correo}
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-4">
                 <label
-                  htmlFor="telefono"
+                  htmlFor="numero"
                   className="block text-white font-semibold"
                 >
-                  Modelo
+                  Teléfono
                 </label>
                 <input
                   type="tel"
-                  id="telefono"
-                  name="telefono"
+                  id="numero"
+                  name="numero"
                   className="w-full p-2 border border-gray-300 rounded mt-1"
                   placeholder="Tu número de teléfono"
+                  value={formData.numero}
+                  onChange={handleChange}
                 />
               </div>
               <strong className="my-4 block "> ---- Detalles Vehiculo ----</strong>
               <div className="mb-4">
-                <label htmlFor="marca"
+                <label
+                  htmlFor="marca"
                   className="block font-semibold"
-                
-                >Marca</label>
+                >
+                  Marca
+                </label>
                 <select
                   id="marca"
                   name="marca"
                   className="w-full p-2 border border-gray-300 rounded mt-1"
-                  defaultValue={marca}
-                  onChange={(e) => setMarca(e.target.value)}
+                  value={formData.marca}
+                  onChange={(e) => {
+                    setMarca(e.target.value);
+                    handleChange(e);
+                  }}
                 >
                   <option value="Otro">Otro</option>
                   {Object.entries(marcas).map(([key, value]) => (
@@ -147,6 +229,25 @@ export default function UserDates() {
                   name="modelo"
                   className="w-full p-2 border border-gray-300 rounded mt-1"
                   placeholder="Modelo de tu auto ej.(mustang)"
+                  value={formData.modelo}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="año"
+                  className="block font-semibold"
+                >
+                  Año
+                </label>
+                <input
+                  type="number"
+                  id="año"
+                  name="año"
+                  className="w-full p-2 border border-gray-300 rounded mt-1"
+                  placeholder="Año del vehículo"
+                  value={formData.año}
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-4">
@@ -158,6 +259,8 @@ export default function UserDates() {
                   id="fecha"
                   name="fecha"
                   className="w-full p-2 border border-gray-300 rounded mt-1"
+                  value={formData.fecha}
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-4">
@@ -165,44 +268,46 @@ export default function UserDates() {
                   Hora de la cita
                 </label>
                 <input
-                  defaultValue={time}
-                  onChange={(e) => setCurrentTime(e.target.value)}
                   type="time"
                   id="hora"
                   name="hora"
                   className="w-full p-2 border border-gray-300 rounded mt-1"
+                  value={formData.hora}
+                  onChange={handleChange}
                 />
               </div>
               <button
                 type="submit"
-                className="w-full transition ease-in-out delay-150 hover:translate-y-2 hover:scale-110 hover:shadow-blue-300 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl shadow-xl mb-4"
+                className="w-full transition ease-in-out delay-150 hover:translate-y-2 hover:scale-110 hover:shadow-blue-300 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
-                AGENDAR
+                Agendar Cita
               </button>
             </form>
           </div>
-          <div className="md:w-1/2 flex items-center p-5 justify-center">
-            {selectedLogo && (
-              <div key={selectedLogo.name}>
-                <img
-                  src={selectedLogo.image.source}
-                  alt="Auto en el taller"
-                  className="w-full h-full object-cover logo-image"
-                />
+          <div className="md:w-1/2 bg-cover bg-center flex items-center justify-center relative">
+            {selectedLogo ? (
+              <img
+                src={selectedLogo.image}
+                alt={selectedLogo.name}
+                className="max-w-full max-h-full object-contain p-2"
+              />
+            ) : (
+              <div className="p-6 bg-gradient-to-b from-slate-600 to-zinc-300 text-white">
+                Selecciona una marca para ver el logo del vehículo
               </div>
             )}
           </div>
         </div>
       </div>
-      {/* Spacing forzado */}
-      <div className="hidden md:block w-full md:w-1/2 md:pl-4">
-        <p className="text-lg">
-          <br />
-          <br />
-          <br />
-        </p>
-      </div>
-
+       {/*Espacio para evitar que el footer tape el contenido*/}
+       <div className="w-full">
+                <p className="text">
+                <br />
+                <br />
+                <br />
+                <br />
+                </p>
+              </div>
       <Footer />
     </>
   );

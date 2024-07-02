@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
             ...prevState,
             userToken: action.token,
             isSignOut: false,
-            //Nombre provicional
+            // Nombre provisional
             nameUser: action.name,
             emailUser: action.email,
           };
@@ -65,6 +65,10 @@ export const AuthProvider = ({ children }) => {
           });
           if (response.ok) {
             const data = await response.json();
+            // Almacenamos datos del token en localStorage
+            localStorage.setItem("userToken", data.token);
+            localStorage.setItem("userName", data.name);
+            localStorage.setItem("userEmail", loginData.email);
             // Despachamos el estado cuando se cumpla el inicio de sesión según la API
             dispatch({
               type: "SIGN_IN",
@@ -84,14 +88,11 @@ export const AuthProvider = ({ children }) => {
         }
       },
       signOut: async () => {
-        // Logic for close session delete no necessary items
+        // Logica para el cierre de sesion
+        localStorage.removeItem("userToken");
+        localStorage.removeItem("userName");
+        localStorage.removeItem("userEmail");
         dispatch({ type: "SIGN_OUT" });
-        try {
-          //await SecureStore.deleteItemAsync("userToken"); // Remove the token from SecureStore
-        } catch (err) {
-          console.log(err);
-        }
-        console.log("CERROOOOO SESION UN cabron");
       },
       signUp: async (data) => {
         const capitalizeFirstLetter = (string) => {
@@ -100,7 +101,7 @@ export const AuthProvider = ({ children }) => {
         };
         try {
           const response = await fetch(`${AuthService}/signup`, {
-            method: "POST", //POST ya que se hace la creacion de un elemento
+            method: "POST", // POST ya que se hace la creación de un elemento
             headers: {
               "Content-Type": "application/json",
             },
@@ -113,11 +114,16 @@ export const AuthProvider = ({ children }) => {
             }),
           });
           if (response.ok) {
-            dispatch({ //REQUIERE SETEO CON DATOS PROPORCIONADOS POR LA API
+            const responseData = await response.json();
+            // Almacenamos el token en localStorage
+            localStorage.setItem("userToken", responseData.token);
+            localStorage.setItem("userName", responseData.name);
+            localStorage.setItem("userEmail", data.email);
+            dispatch({ // REQUIERE SETEO CON DATOS PROPORCIONADOS POR LA API
               type: "SIGN_IN",
-              token: 'tokenExample', //Falta sacar el token de autenticacion de la sesion
+              token: responseData.token,
               email: data.email,
-              name: data.name,
+              name: responseData.name,
             });
             return true;
           } else {
@@ -135,11 +141,21 @@ export const AuthProvider = ({ children }) => {
   React.useEffect(() => {
     const restoreToken = async () => {
       try {
-        //const token = await SecureStore.getItemAsync("userToken");
-        const token = false;
+        const token = localStorage.getItem("userToken");
+        const name = localStorage.getItem("userName");
+        const email = localStorage.getItem("userEmail");
         if (token) {
           // Update the state with restored token
-          dispatch({ type: "RESTORE_TOKEN", token: token });
+          dispatch({
+            type: "RESTORE_TOKEN",
+            token: token,
+          });
+          dispatch({
+            type: "SIGN_IN",
+            token: token,
+            name: name,
+            email: email,
+          });
         } else {
           throw new Error("Token not found");
         }

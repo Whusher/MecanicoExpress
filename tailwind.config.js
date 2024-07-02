@@ -11,7 +11,8 @@ export default {
         current: 'currentColor',
         backgroundNormal: '#1B1A1A',
         buttons: '#00ABFB',
-        backgroundRegister: 'EB3E39'
+        backgroundRegister: '#EB3E39',
+        backgroundLogin: '#1F4BEB'
       },
     },
   },

@@ -11,6 +11,9 @@ import Citas from './views/guest/Citas';
 import Nosotros from './views/guest/Nosotros';
 //Pages User Logged
 import UserDates from './views/loggedUser/UserDates';
+import Dates from './views/loggedUser/Dates'
+import HistoryUsers from './views/loggedUser/HistoryUsers'
+import Profile from './views/loggedUser/Profile'
 //Context API
 import { useAuth } from './contexts/AuthContext';
 
@@ -26,6 +29,9 @@ function App() {
           state.userToken ?(
             <>
             <Route path="/citas" element={<UserDates/>} />
+            <Route path="/CitasUsers" element={<Dates/>} />
+            <Route path="/History" element={<HistoryUsers/>} />
+            <Route path="/Profile" element={<Profile/>} />
             </>
           ):(
             <>

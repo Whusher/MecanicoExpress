@@ -45,10 +45,10 @@ function Login() {
 
   return (
     <div className="flex justify-center items-center h-screen bg-backgroundNormal">
-      <div className="w-1/2 h-screen hidden lg:flex justify-center items-center bg-blue-700">
+      <div className="w-1/2 h-screen hidden lg:flex justify-center items-center bg-backgroundLogin">
         <img src="/loginn.png" alt="" className="object-cover h-full" />
       </div>
-      <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2 bg-backgroundNormal">
+      <div className="lg:p-36 md:p-52 sm:20 p-8 w-1/2 bg-backgroundNormal h-screen no-scroll">
         <h1 className="text-6xl font-sans mb-4 text-white font-semibold">
           Mecánico Express Querétaro
         </h1>

@@ -1,10 +1,13 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import LogoList from "../../assets/CarLogo.json";
 import { ComponentSVG } from "../../assets/ComponentSVG";
 import { Link } from "react-router-dom";
-
+import { useAuth } from "../../contexts/AuthContext";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { AppointmentService, DetailService } from "../../components/EndpointRoute";
 const marcas = {
   chevrolet: "Chevrolet",
   ford: "Ford",
@@ -19,21 +22,61 @@ const marcas = {
   fiat: "Fiat",
 };
 
+const sucursales = [
+  {
+    id: 1,
+    name: 'Casa Blanca'
+  },
+  {
+    id:2,
+    name: 'Av de la Luz'
+  }
+]
+
+const tipoVehicle = [
+  "Van",
+  "Carga",
+  "Coupe",
+  "Sedan"
+]
+
 export default function UserDates() {
   const [marca, setMarca] = useState("");
+  const navigate = useNavigate();
+  const [servicios, setServicios] = useState([]);
+  const {state} = useAuth();
   const [formData, setFormData] = useState({
-    nombre: "",
-    tipo: "",
-    año: "",
+    nombre: state.nameUser,
+    apellido: state.lastNameUser,
+    marca: "",
     modelo: "",
-    correo: "",
-    numero: "",
+    tipo: "",//Sedan Coupe Van
+    año: "",
+    correo: state.emailUser,
+    numero: state.cellphoneUser,
     fecha: "",
     hora: "",
-    cliente_id: "", // Añade el ID del cliente
+    cliente_id: state.userToken, // Añade el ID del cliente
     sucursal_id: "", // Añade el ID de la sucursal
     servicio_id: "", // Añade el ID del servicio
   });
+
+  useEffect(()=>{
+   //Funcion auto invocada
+   const getServicios = async()=>{
+    const response = await fetch(`${DetailService}/services`,{
+      method: 'GET',  
+      headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      if(response.ok){
+        const data = await response.json();
+        setServicios(data.results)
+      }
+    }
+    getServicios();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,13 +89,15 @@ export default function UserDates() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/appointments', {
+      const response = await fetch(`${AppointmentService}/creation`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       });
+      console.log(formData);
+      console.log(JSON.stringify(formData));
 
       if (!response.ok) {
         throw new Error('Error en la solicitud al servidor');
@@ -60,8 +105,8 @@ export default function UserDates() {
 
       const data = await response.json();
       
-      if (data.message === 'Cita registrada con éxito') {
-        alert('Cita registrada con éxito');
+      if (data) {
+        toast('Cita registrada con éxito',{theme: 'dark'});
         // Limpiar el formulario o redirigir a otra página
         setFormData({
           nombre: "",
@@ -76,12 +121,12 @@ export default function UserDates() {
           sucursal_id: "",
           servicio_id: "",
         });
+        navigate('/CitasUsers');
       } else {
-        alert('Error al registrar la cita');
+        toast('Error al registrar la cita... Intentalo mas tarde',{theme: 'dark'});
       }
     } catch (error) {
-      console.error('Error:', error);
-      alert('Error al registrar la cita');
+      toast('Error al registrar la cita',{theme: 'dark'});
     }
   };
 
@@ -124,20 +169,53 @@ export default function UserDates() {
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label
-                  htmlFor="tipo"
+                  htmlFor="servicio_id"
                   className="block text-white font-semibold"
                 >
                   Servicio
                 </label>
-                <input
+                <select
                   type="text"
-                  id="tipo"
-                  name="tipo"
+                  id="servicio_id"
+                  name="servicio_id"
                   className="w-full p-2 border border-white font-semibold rounded mt-1"
                   placeholder="Describe el servicio requerido"
-                  value={formData.tipo}
+                  value={formData.servicio_id}
                   onChange={handleChange}
-                />
+                >
+                  <option value={0}>Selecciona una opcion</option>
+                  {
+                    servicios.map((service,index)=>{
+                      return <option key={index} value={service.id}>{service.nombre}</option>
+                    })
+                  }
+                </select>
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="sucursal"
+                  className="block text-white font-semibold"
+                >
+                  Sucursal
+                </label>
+                <select
+                  id="sucursal_id"
+                  name="sucursal_id"
+                  className="w-full p-2 border border-white font-semibold rounded mt-1"
+                  placeholder="Describe el servicio requerido"
+                  onChange={handleChange}
+                >
+                  <option>Selecciona una sucursal</option>
+                  {
+                    sucursales.map((suc, index)=>{
+                      return(
+                        <option key={index} value={suc.id}>
+                          {suc.name}
+                        </option>
+                      )
+                    })
+                  }
+                </select>
               </div>
               <div className="mb-4">
                 <label
@@ -153,6 +231,23 @@ export default function UserDates() {
                   className="w-full p-2 border border-white font-semibold rounded mt-1"
                   placeholder="Tu nombre"
                   value={formData.nombre}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="apellido"
+                  className="block text-white font-semibold"
+                >
+                  Apellido
+                </label>
+                <input
+                  type="text"
+                  id="apellido"
+                  name="apellido"
+                  className="w-full p-2 border border-white font-semibold rounded mt-1"
+                  placeholder="Tu apellido"
+                  value={formData.apellido}
                   onChange={handleChange}
                 />
               </div>
@@ -212,6 +307,30 @@ export default function UserDates() {
                   {Object.entries(marcas).map(([key, value]) => (
                     <option key={key} value={key}>
                       {value}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="tipo"
+                  className="block font-semibold"
+                >
+                  Tipo de Vehiculo
+                </label>
+                <select
+                  id="tipo"
+                  name="tipo"
+                  className="w-full p-2 border border-gray-300 rounded mt-1"
+                  value={formData.tipo}
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
+                >
+                  <option value={0}>Selecciona uno</option>
+                  {tipoVehicle.map((type, index) => (
+                    <option key={index} value={type}>
+                      {type}
                     </option>
                   ))}
                 </select>
@@ -287,7 +406,7 @@ export default function UserDates() {
           <div className="md:w-1/2 bg-cover bg-center flex items-center justify-center relative">
             {selectedLogo ? (
               <img
-                src={selectedLogo.image}
+                src={selectedLogo.image.source}
                 alt={selectedLogo.name}
                 className="max-w-full max-h-full object-contain p-2"
               />

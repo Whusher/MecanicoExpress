@@ -14,9 +14,10 @@ export const AuthProvider = ({ children }) => {
             ...prevState,
             userToken: action.token,
             isSignOut: false,
-            // Nombre provisional
             nameUser: action.name,
+            lastNameUser: action.lastName,
             emailUser: action.email,
+            cellphoneUser: action.cellphone
           };
         case "SIGN_OUT":
           return {
@@ -38,6 +39,8 @@ export const AuthProvider = ({ children }) => {
     {
       userToken: null,
       nameUser: null,
+      lastNameUser: null,
+      cellphoneUser: null,
       emailUser: null,
       isSignOut: false,
       isLoading: true,
@@ -68,13 +71,17 @@ export const AuthProvider = ({ children }) => {
             // Almacenamos datos del token en localStorage
             localStorage.setItem("userToken", data.token);
             localStorage.setItem("userName", data.name);
-            localStorage.setItem("userEmail", loginData.email);
+            localStorage.setItem("lastNameUser", data.lastName);
+            localStorage.setItem("userEmail", data.email);
+            localStorage.setItem("cellphoneUser", data.phone);
             // Despachamos el estado cuando se cumpla el inicio de sesión según la API
             dispatch({
               type: "SIGN_IN",
               token: data.token,
-              email: loginData.email,
+              email: data.email,
               name: data.name,
+              lastName: data.lastName,
+              cellphone: data.phone,
             });
             return true;
           } else {
@@ -91,7 +98,9 @@ export const AuthProvider = ({ children }) => {
         // Logica para el cierre de sesion
         localStorage.removeItem("userToken");
         localStorage.removeItem("userName");
+        localStorage.removeItem("lastNameUser");
         localStorage.removeItem("userEmail");
+        localStorage.removeItem("cellphoneUser");
         dispatch({ type: "SIGN_OUT" });
       },
       signUp: async (data) => {
@@ -144,6 +153,8 @@ export const AuthProvider = ({ children }) => {
         const token = localStorage.getItem("userToken");
         const name = localStorage.getItem("userName");
         const email = localStorage.getItem("userEmail");
+        const lastName = localStorage.getItem("lastNameUser");
+        const phone = localStorage.getItem("cellphoneUser");
         if (token) {
           // Update the state with restored token
           dispatch({
@@ -155,6 +166,8 @@ export const AuthProvider = ({ children }) => {
             token: token,
             name: name,
             email: email,
+            lastName: lastName,
+            cellphone: phone
           });
         } else {
           throw new Error("Token not found");

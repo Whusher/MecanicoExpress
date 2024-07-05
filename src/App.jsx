@@ -22,6 +22,7 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
@@ -39,7 +40,6 @@ function App() {
             <Route path="/promociones" element={<Promociones />} />
             <Route path="/refacciones" element={<Refacciones />} />
             <Route path="/citas" element={<Citas />} />
-            <Route path="/nosotros" element={<Nosotros />} />
             </>
           )
         }

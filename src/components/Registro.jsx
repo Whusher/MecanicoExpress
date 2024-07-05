@@ -52,7 +52,7 @@ function Registro() {
       if (response) {
         setLoading(false);
         toast.success("Registro Exitoso !", {theme: 'dark'});
-        navigate("/");
+        navigate("/login");
       } else {
         throw "Error code 500";
       }

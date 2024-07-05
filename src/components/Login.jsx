@@ -30,6 +30,7 @@ function Login() {
         await new Promise(resolve => setTimeout(resolve, 2000));
         const response = await responsePromise;
         if (response) {
+          toast.success('Bienvenido!',{theme: 'dark'})
           navigate('/');
         } else {
           toast.error('Contraseña o correo incorrectos', { theme: 'dark' });
@@ -48,7 +49,7 @@ function Login() {
       <div className="w-1/2 h-screen hidden lg:flex justify-center items-center bg-backgroundLogin">
         <img src="/loginn.png" alt="" className="object-cover h-full" />
       </div>
-      <div className="lg:p-36 md:p-52 sm:20 p-8 w-1/2 bg-backgroundNormal h-screen no-scroll">
+      <div className="lg:p-36 md:p-52 sm:20 p-8 md:w-1/2 bg-backgroundNormal h-screen no-scroll">
         <h1 className="text-6xl font-sans mb-4 text-white font-semibold">
           Mecánico Express Querétaro
         </h1>

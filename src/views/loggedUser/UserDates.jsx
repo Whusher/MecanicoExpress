@@ -8,6 +8,8 @@ import { useAuth } from "../../contexts/AuthContext";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { AppointmentService, DetailService } from "../../components/EndpointRoute";
+import { validateTime } from "../../utils/ValidationDates";
+
 const marcas = {
   chevrolet: "Chevrolet",
   ford: "Ford",
@@ -88,6 +90,12 @@ export default function UserDates() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateTime(formData.hora)) {
+      toast.error('Por favor ingresa una hora válida (entre 9:00 y 15:59).');
+      return;
+    }
+
     try {
       const response = await fetch(`${AppointmentService}/creation`, {
         method: 'POST',

@@ -26,6 +26,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
+        <Route path="/servicios" element={<Servicios />} />
+        <Route path="/promociones" element={<Promociones />} />
+        <Route path="/refacciones" element={<Refacciones />} />
+        
         {
           state.userToken ?(
             <>

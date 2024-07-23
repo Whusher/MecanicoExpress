@@ -1,3 +1,3 @@
-export const AuthService = 'http://localhost:3000/auth';
-export const DetailService = 'http://localhost:3000/taller';
-export const AppointmentService = 'http://localhost:3000/dates'
+export const AuthService = 'https://mainbackend-jsdlp7gqc-mechanicqros-projects.vercel.app/auth';
+export const DetailService = 'https://mainbackend-jsdlp7gqc-mechanicqros-projects.vercel.app/taller';
+export const AppointmentService = 'https://mainbackend-jsdlp7gqc-mechanicqros-projects.vercel.app/dates'

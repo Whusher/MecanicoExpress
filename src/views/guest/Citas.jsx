@@ -1,6 +1,7 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { ComponentSVG } from "../../assets/ComponentSVG";
+import { Link } from "react-router-dom";
 export default function Citas() {
   return (
     <>
@@ -18,10 +19,12 @@ export default function Citas() {
               Tu automóvil en las mejores manos con expertos calificados y capacitados para resolver cualquier falla.
             </p>
           </article>
-          <button className="text-center rounded bg-buttons font-bold text-slate-900 my-10 p-3 block hover:shadow-lg hover:shadow-blue-500/50 hover:text-gray-300 ">
-            Accede Ahora! 
-            <ComponentSVG.Dates24h/>
-          </button>
+          <Link to={'/login'} className="text-center w-1/2 h-20 rounded bg-buttons font-bold text-slate-900 my-3  mx-auto p-3 flex hover:shadow-lg hover:shadow-blue-500/50 hover:text-gray-300 ">
+            <div className="text-center m-3">
+              Accede Ahora! 
+            </div>
+              <ComponentSVG.Dates24h/>
+          </Link>
           <span className="text-teal-100/90">Tu tiempo importa y por ello trabajamos fuerte y eficiente para que no lo pierdas en otros talleres.</span>
         </section>
         <div className="w-full md:w-1/2 flex justify-center">

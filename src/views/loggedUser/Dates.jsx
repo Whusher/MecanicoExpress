@@ -1,11 +1,36 @@
 import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { toast } from "react-toastify";
 import {
   AppointmentService,
   DetailService,
 } from "../../components/EndpointRoute";
 import { useAuth } from "../../contexts/AuthContext";
+
+
+//Cancel request
+async function cancelAppointment(id,emailUser){
+  try{
+    const response = await fetch(`${AppointmentService}/cancelAppointment`,{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        token: emailUser,
+        indexDate: id
+      })
+    })
+    if(response.ok){
+      toast('Cita cancelada exitosamente:',{theme: 'dark', });
+      location.reload();
+    }
+  }catch(e){
+    console.log(e);
+    toast('Error al solicitar la cancelacion de la cita',{theme: 'colored'});
+  }
+}
 
 function Dates() {
   const [userAppointments, setUserAppointments] = useState([
@@ -71,6 +96,7 @@ function Dates() {
               appointments={userAppointments}
               onEdit={handleEdit}
               services={services}
+              user = {state.emailUser}
             />
           )}
         </div>
@@ -80,7 +106,7 @@ function Dates() {
   );
 }
 
-function ShowAppointments({ appointments, onEdit, services }) {
+function ShowAppointments({ appointments, user, services }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4">
       {appointments.map((appointment, index) => {
@@ -142,7 +168,7 @@ function ShowAppointments({ appointments, onEdit, services }) {
             <div className="w-full md:w-1/3 flex justify-center items-center pb-6">
               <button
                 className="bg-red-500 text-white font-bold py-2 px-6 rounded-full shadow-xl hover:bg-indigo-600 transition-all duration-300"
-                onClick={() => onEdit(index)}
+                onClick={async() => cancelAppointment(appointment.id,user)}
               >
                 Solicitar la cancelacion de la cita
               </button>

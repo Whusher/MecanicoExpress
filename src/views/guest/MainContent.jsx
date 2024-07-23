@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 import '../../styles.css';
 import ImageCarousel from "../../components/Carrusel";
 import MapComponent from '../../components/MapComponent';
+import { useAuth } from "../../contexts/AuthContext";
 
 function MainContent() {
-
+  const {state} = useAuth();
   const markers = [
     {
       position: [20.576156, -100.394317],
@@ -38,7 +39,7 @@ function MainContent() {
             <p className="text-m mb-10 font-semibold text-black ">
               Atendemos las marcas Chevrolet, GMC, VW, Nissan, Ford, Chrysler, Dodge, Jeep, Honda, Toyota kya.
             </p>
-            <Link to="/Login">
+            <Link to={`${state.userToken ? '/citas' : '/login'}`}>
               <button className="transition ease-in-out delay-150 hover:translate-y-2 hover:scale-110 hover:shadow-blue-300 bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl shadow-xl mb-4">
                 AGENDA TU CITA AHORA
               </button>

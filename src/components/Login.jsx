@@ -102,7 +102,7 @@ function Login() {
           <p className="text-white">
             ¿Aún no tienes cuenta?{" "}
             <a
-              className="hover:underline text-blue-500"
+              className="hover:underline text-blue-500 cursor-pointer"
               onClick={() => navigate("/registro")}
             >
               Regístrate

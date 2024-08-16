@@ -16,9 +16,11 @@ function Refacciones() {
               <p className="text-base md:text-lg mb-4 md:mb-8">
                 Al utilizar Refacciones Originales se previene el deterioro prematuro de los sistemas del vehículo. Para mantener un vehículo funcionando en su mejor nivel y que éste mantenga mejor su valor en el tiempo, es preferible utilizar Refacciones Originales que nos brindan seguridad y confiabilidad.
               </p>
+              <a href="https://mecanicoexpressqueretaro.com/catalogo/" target="_blank" rel="noopener noreferrer">
               <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-xl shadow-lg">
                 Ver productos
               </button>
+              </a>
             </div>
           </div>
   

@@ -16,9 +16,9 @@ function MainContent() {
       link: "https://www.google.com.mx/maps/place/Chevy+Center+Plus/@20.5753614,-100.3945704,19.32z/data=!4m15!1m8!3m7!1s0x85d344d80c688ba1:0x223933f176c287d!2sRoque+Rubio+114,+Casa+Blanca,+76030+Santiago+de+Quer%C3%A9taro,+Qro.!3b1!8m2!3d20.5759145!4d-100.3943167!16s%2Fg%2F11cncjjq5q!3m5!1s0x85d344d80db378a9:0x9ba759d5325a2a17!8m2!3d20.5759396!4d-100.3943376!16s%2Fg%2F11csp7kq1w?entry=ttu",
     },
     {
-      position: [20.638605, -100.447008],
+      position: [20.638556269755455, -100.44697076085875],
       popupText: "Ubicacion de Satelite",
-      link: "https://www.google.com/maps/place/20%C2%B038'18.5%22N+100%C2%B026'49.2%22W/@20.6384698,-100.4495832,17z/data=!3m1!4b1!4m4!3m3!8m2!3d20.6384698!4d-100.4470083?entry=ttu",
+      link: "https://www.google.com.mx/maps/place/Mec%C3%A1nica+express/@20.6386198,-100.4469806,3a,75y,177.79h,107.91t/data=!3m6!1e1!3m4!1sLvl8lwCbPFGN3tEf7FCrkg!2e0!7i16384!8i8192!4m9!1m2!2m1!1sAv.+De+la+luz+%23203,+col+cosmos+sat%C3%A9lite!3m5!1s0x85d351cbfc976435:0xecaa21d8073d78b9!8m2!3d20.6385622!4d-100.4469764!16s%2Fg%2F11k156x70j?coh=205409&entry=ttu",
     },
   ];
 
@@ -37,7 +37,7 @@ function MainContent() {
               Nuestra visión es lograr que todos nuestros clientes manejen seguros.
             </p>
             <p className="text-m mb-10 font-semibold text-black ">
-              Atendemos las marcas Chevrolet, GMC, VW, Nissan, Ford, Chrysler, Dodge, Jeep, Honda, Toyota kya.
+              Atendemos las marcas Chevrolet, Mazda, GMC, VW, Nissan, Ford, Chrysler, Dodge, Jeep, Honda, Toyota, kya.
             </p>
             <Link to={`${state.userToken ? '/citas' : '/login'}`}>
               <button className="transition ease-in-out delay-150 hover:translate-y-2 hover:scale-110 hover:shadow-blue-300 bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl shadow-xl mb-4">

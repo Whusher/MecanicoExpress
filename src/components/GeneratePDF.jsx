@@ -18,7 +18,6 @@ const GeneratePDF = (appointment) => {
     nameUser,
     emailUser,
     cellphoneUser,
-    description,
   } = appointment;
 
   const doc = new jsPDF();
@@ -39,9 +38,9 @@ const GeneratePDF = (appointment) => {
   doc.text("Información del Cliente", 14, 40);
   doc.setFontSize(10);
   doc.setTextColor("#333333");
-  doc.text(`Nombre: ${nameUser || "No especificado"}`, 14, 46);
-  doc.text(`Correo: ${emailUser || "No especificado"}`, 14, 52);
-  doc.text(`Teléfono: ${cellphoneUser || "No especificado"}`, 14, 58);
+  doc.text(`Nombre: ${nameUser}`, 14, 46);
+  doc.text(`Correo: ${emailUser}`, 14, 52);
+  doc.text(`Teléfono: ${cellphoneUser}`, 14, 58);
 
   // Líneas divisorias
   doc.setDrawColor(0, 0, 0);
@@ -54,8 +53,8 @@ const GeneratePDF = (appointment) => {
   doc.text("Información de la Cita", 14, 70);
   doc.setFontSize(10);
   doc.setTextColor("#333333");
-  doc.text(`Fecha: ${fecha || "No especificado"}`, 14, 82);
-  doc.text(`Hora: ${hora || "No especificado"}`, 14, 88);
+  doc.text(`Fecha: ${fecha}`, 14, 82);
+  doc.text(`Hora: ${hora}`, 14, 88);
   doc.text(
     `Estado: ${
       status === 1
@@ -83,7 +82,6 @@ const GeneratePDF = (appointment) => {
           ? "Aprobada"
           : "No especificado",
       ],
-      ["Descripción", description || "No proporcionada"],
       ["Marca", marca || "No especificada"],
       ["Modelo", modelo || "No especificado"],
       ["Año", año || "No especificado"],

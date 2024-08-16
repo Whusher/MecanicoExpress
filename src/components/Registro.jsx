@@ -197,8 +197,7 @@ function Registro() {
           <p className="text-white">
             ¿Ya tienes cuenta?{" "}
             <a
-              //href="mailto:syncro_cargo@gmail.com"
-              className="hover:underline text-blue-500"
+              className="hover:underline text-blue-500 cursor-pointer"
               onClick={() => navigate("/Login")}
             >
               Inicia sesión

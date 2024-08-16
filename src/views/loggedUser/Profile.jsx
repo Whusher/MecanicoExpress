@@ -25,7 +25,7 @@ const appointments = [
 
 function UserProfile() {
   const { state } = useAuth();
-  const { nameUser, emailUser } = state;
+  const { nameUser, lastNameUser, emailUser, cellphoneUser } = state;
 
   return (
     <>
@@ -55,8 +55,16 @@ function UserProfile() {
               <span>{nameUser}</span>
             </div>
             <div className="flex justify-between">
+              <span className="font-semibold">Apellidos:</span>
+              <span>{lastNameUser}</span>
+            </div>
+            <div className="flex justify-between">
               <span className="font-semibold">Correo Electrónico:</span>
               <span>{emailUser}</span>
+            </div>
+          <div className="flex justify-between">
+              <span className="font-semibold">Némero telefónico:</span>
+              <span>{cellphoneUser}</span>
             </div>
           </div>
           <button className="mt-6 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700">
@@ -91,7 +99,7 @@ function UserProfile() {
         </div>
 
         {/* Account Settings */}
-        <div className="bg-white p-8 rounded-lg shadow-md mt-6">
+        {/* <div className="bg-white p-8 rounded-lg shadow-md mt-6">
           <h2 className="text-2xl font-bold text-gray-700 mb-4">Configuración de la Cuenta</h2>
           <button className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700">
             Cambiar Contraseña
@@ -99,7 +107,7 @@ function UserProfile() {
           <button className="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-600 mt-4">
             Cerrar Sesión
           </button>
-        </div>
+        </div> */}
 
               {/*Espacio para evitar que el footer tape el contenido*/}
               <div className="w-full">

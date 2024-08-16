@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { AppointmentService, DetailService } from "../../components/EndpointRoute";
 import { validateTime } from "../../utils/ValidationDates";
+import { validateDate } from "../../utils/ValidationDates";
 
 const marcas = {
   chevrolet: "Chevrolet",
@@ -90,12 +91,17 @@ export default function UserDates() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    if (!validateDate(formData.fecha)) {
+      toast.error('La fecha seleccionada no es válida. No se pueden hacer citas en días pasados.');
+      return;
+    }
+  
     if (!validateTime(formData.hora)) {
       toast.error('Por favor ingresa una hora válida (entre 9:00 y 15:59).');
       return;
     }
-
+  
     try {
       const response = await fetch(`${AppointmentService}/creation`, {
         method: 'POST',
@@ -106,15 +112,15 @@ export default function UserDates() {
       });
       console.log(formData);
       console.log(JSON.stringify(formData));
-
+  
       if (!response.ok) {
         throw new Error('Error en la solicitud al servidor');
       }
-
+  
       const data = await response.json();
-      
+  
       if (data) {
-        toast('Cita registrada con éxito',{theme: 'dark'});
+        toast('Cita registrada con éxito', { theme: 'dark' });
         // Limpiar el formulario o redirigir a otra página
         setFormData({
           nombre: "",
@@ -131,12 +137,13 @@ export default function UserDates() {
         });
         navigate('/CitasUsers');
       } else {
-        toast('Error al registrar la cita... Intentalo mas tarde',{theme: 'dark'});
+        toast('Error al registrar la cita... Intentalo más tarde', { theme: 'dark' });
       }
     } catch (error) {
-      toast('Error al registrar la cita',{theme: 'dark'});
+      toast('Error al registrar la cita', { theme: 'dark' });
     }
   };
+  
 
   // Indexar las marcas por nombre para mejorar la búsqueda
   const indexedMarcas = useMemo(() => {

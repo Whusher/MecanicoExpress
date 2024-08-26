@@ -9,7 +9,7 @@ const navigation = [
   { name: 'INICIO', href: '/', current: true },
   { name: 'CITAS', href: '/citas', current: false },
   { name: 'SERVICIOS', href: '/servicios', current: false },
-  { name: 'PROMOCIONES', href: '/promociones', current: false },
+  { name: 'PAQUETES', href: '/promociones', current: false },
   { name: 'REFACCIONES', href: '/refacciones', current: false },
   { name: 'CONOCENOS', href: '/nosotros', current: false },
 ];

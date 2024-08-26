@@ -15,7 +15,7 @@ function HistorialDates() {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const response = await fetch(`${AppointmentService}/myappointments`, {
+        const response = await fetch(`${AppointmentService}/HistoryAppoinments`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -69,7 +69,7 @@ function HistorialDates() {
         </div>
         <div className="flex-grow">
           {userAppointments.length === 0 ? (
-            <h2 className="text-center text-2xl mt-8">Sin citas pendientes</h2>
+            <h2 className="text-center text-2xl mt-8">Sin historial</h2>
           ) : (
             <ShowAppointments appointments={userAppointments} services={services} />
           )}
@@ -111,7 +111,7 @@ function ShowAppointments({ appointments, services }) {
               </ul>
             </div>
             <p className={`text-xl font-bold ${appointment.status === 1 ? "text-yellow-500" : appointment.status === 2 ? "text-green-500" : ""}`}>
-              {appointment.status === 1 ? " En espera de confirmacion... " : " Aprobada "}
+              {appointment.status === 1 ? " Atendida" : "Perdida"}
             </p>
             <p className="font-semibold text-indigo-800 text-xl my-3">
               Sucursal: {appointment.sucursal_id === 1 ? "Casa Blanca" : "Av de la Luz"}

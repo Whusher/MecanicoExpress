@@ -26,18 +26,20 @@ function MainContent() {
     <>
       <Header />
       <div className="bg-white">
-        <div className="bg-white flex justify-center items-center">
+        <div className="bg-white flex flex-col md:flex-row justify-center items-center">
           {/* Columna izquierda para el contenido */}
-          <div className="w-1/2 text-center max-w-2xl mx-auto px-4 ">
-            <h1 className="md:text-5xl font-bold text-blue-700 text-2xl">Mecánico Express</h1>
-            <h2 className="md:text-2xl text-lg font-bold mb-3 text-red-700 ">Taller Mecánico en Querétaro</h2>
-            <h3 className="text-lg mb-4 font-semibold md:text-black text-red-700">MECÁNICO EXPRESS “TE DA LO QUE NECESITAS”</h3>
+          <div className="w-full md:w-1/2 text-center max-w-2xl mx-auto px-4">
+            <h1 className="text-4xl md:text-6xl font-bold text-blue-700">Mecánico Express</h1>
+            <h2 className="text-xl md:text-3xl font-bold mb-3 text-red-700">Taller Mecánico en Querétaro</h2>
+            <h3 className="text-md md:text-2xl mb-4 font-semibold text-red-700 md:text-black">
+              MECÁNICO EXPRESS “TE DA LO QUE NECESITAS”
+            </h3>
 
-            <p className="text-m mb-2 font-semibold text-black hidden md:block">
+            <p className="text-sm md:text-lg mb-2 font-semibold text-black hidden md:block">
               Nuestra visión es lograr que todos nuestros clientes manejen seguros.
             </p>
-            <p className="text-m mb-10 font-semibold text-black ">
-              Atendemos las marcas Chevrolet, Mazda, GMC, VW, Nissan, Ford, Chrysler, Dodge, Jeep, Honda, Toyota, kya.
+            <p className="text-sm md:text-lg mb-10 font-semibold text-black">
+              Atendemos las marcas Chevrolet, Mazda, GMC, VW, Nissan, Ford, Chrysler, Dodge, Jeep, Honda, Toyota, Kya.
             </p>
             <Link to={`${state.userToken ? '/citas' : '/login'}`}>
               <button className="transition ease-in-out delay-150 hover:translate-y-2 hover:scale-110 hover:shadow-blue-300 bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl shadow-xl mb-4">
@@ -47,10 +49,16 @@ function MainContent() {
           </div>
 
           {/* Columna derecha para la imagen */}
-          <div className="w-1/2 h-auto flex justify-center items-center hidden md:flex">
+          <div className="w-full md:w-1/2 h-auto flex justify-center items-center md:hidden">
+            <img src="/main.png" alt="Imagen futura" className="w-full h-auto object-cover mt-4" />
+          </div>
+
+          <div className="w-full md:w-1/2 h-auto flex justify-center items-center hidden md:flex">
             <img src="/main.png" alt="Imagen futura" className="w-full h-auto object-cover" />
           </div>
         </div>
+
+
 
         {/* Contenedor del carrusel */}
         <div className="bg-white">

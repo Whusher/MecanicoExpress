@@ -11,7 +11,7 @@ const navigation = [
   { name: 'SERVICIOS', href: '/servicios', current: false },
   { name: 'PAQUETES', href: '/promociones', current: false },
   { name: 'REFACCIONES', href: '/refacciones', current: false },
-  { name: 'CONOCENOS', href: '/nosotros', current: false },
+  { name: 'CONÓCENOS', href: '/nosotros', current: false },
 ];
 
 function classNames(...classes) {

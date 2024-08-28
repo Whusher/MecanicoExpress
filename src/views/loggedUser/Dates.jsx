@@ -43,7 +43,6 @@ function Dates() {
   };
 
   const getAppointments = async () => {
-    console.log('Aquiiii:');
     console.log(state.userToken);
     try {
       const response = await fetch(`${AppointmentService}/myappointments`, {

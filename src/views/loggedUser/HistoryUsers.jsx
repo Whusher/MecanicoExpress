@@ -15,7 +15,7 @@ function HistorialDates() {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const response = await fetch(`${AppointmentService}/HistoryAppoinments`, {
+        const response = await fetch(`${AppointmentService}/myappointments`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -110,8 +110,13 @@ function ShowAppointments({ appointments, services }) {
                 </li>
               </ul>
             </div>
-            <p className={`text-xl font-bold ${appointment.status === 1 ? "text-yellow-500" : appointment.status === 2 ? "text-green-500" : ""}`}>
-              {appointment.status === 1 ? " Atendida" : "Perdida"}
+            <p
+              className={`text-xl font-bold ${appointment.status === 3 ? "text-green-500" :
+                  appointment.status === 4 ? "text-red-500" : ""
+                }`}
+            >
+              {appointment.status === 3 && "Atendida"}
+              {appointment.status === 4 && "Perdida"}
             </p>
             <p className="font-semibold text-indigo-800 text-xl my-3">
               Sucursal: {appointment.sucursal_id === 1 ? "Casa Blanca" : "Av de la Luz"}
